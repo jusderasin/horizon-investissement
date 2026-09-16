@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cockpit de recherche fondamentale pour l'investissement passif.">
+  <title>Horizon — Recherche d'investissement</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230e1b2b'/%3E%3Cpath d='M14 43 27 29l9 8 14-18' fill='none' stroke='%236ee7b7' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div class="brand"><span class="mark">↗</span><span>HORIZON</span><small>RESEARCH DESK</small></div>
+      <div class="asof"><span class="pulse"></span> Données de démonstration · à connecter à vos sources</div>
+      <button class="profile" aria-label="Ouvrir le profil">AR</button>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="eyebrow">VOTRE RADAR D’INVESTISSEMENT</p>
+        <h1>Décider lentement.<br><i>Suivre clairement.</i></h1>
+        <p class="lede">Une veille fondamentale actionnable pour votre portefeuille passif : ce qui mérite une lecture, pourquoi, et sur quel horizon.</p>
+      </div>
+      <div class="allocation"><p>ALIGNEMENT DU PORTEFEUILLE</p><strong>78<span>%</span></strong><div class="bar"><b></b></div><small>7 actifs suivis · 3 à revoir</small></div>
+    </section>
+
+    <nav aria-label="Horizons"><button class="active" data-filter="all">Tout suivre <span>7</span></button><button data-filter="court">Court terme <span>2</span></button><button data-filter="moyen">Moyen terme <span>3</span></button><button data-filter="long">Long terme <span>2</span></button></nav>
+
+    <section class="workspace">
+      <div class="list-panel">
+        <div class="section-head"><div><p class="eyebrow">OPPORTUNITÉS FILTRÉES</p><h2>À examiner cette semaine</h2></div><button class="sort">Trier par conviction ↓</button></div>
+        <div class="asset-list" id="assetList"></div>
+      </div>
+      <aside class="detail" id="detail" aria-live="polite"></aside>
+    </section>
+
+    <section class="bottom-grid">
+      <div class="card alerts"><div class="section-head"><div><p class="eyebrow">ALERTES</p><h2>À ne pas rater</h2></div><button>Voir tout</button></div><div class="alert-row"><span class="alert-dot amber"></span><div><b>Publication à lire</b><p>ASML · résultats T3 attendus dans 6 jours</p></div><time>09:20</time></div><div class="alert-row"><span class="alert-dot green"></span><div><b>Seuil de valorisation atteint</b><p>MSFT · retour dans votre zone de suivi</p></div><time>Hier</time></div></div>
+      <div class="card methodology"><p class="eyebrow">COMMENT LIRE LE SCORE ?</p><h2>Un score est une invitation à vérifier, pas un ordre d’achat.</h2><p>La conviction combine la solidité financière, la valorisation, la dynamique et les risques. Chaque signal reste explicable et lié à ses sources.</p><button id="methodBtn">Voir la méthode →</button></div>
+    </section>
+  </main>
+  <dialog id="methodDialog"><button class="close" id="closeDialog">×</button><p class="eyebrow">MÉTHODE HORIZON</p><h2>Une grille de lecture, jamais une promesse.</h2><p>Le score de conviction pondère : qualité du bilan (30 %), croissance et rentabilité (30 %), valorisation relative (25 %) et risques / catalyseurs (15 %). Les horizons indiquent le temps nécessaire pour que la thèse puisse se matérialiser. Avant toute décision, lisez les sources et vérifiez que l’actif correspond à votre situation, horizon et tolérance au risque.</p></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
