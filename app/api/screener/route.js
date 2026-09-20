@@ -19,19 +19,22 @@ function score({ trailingPE, marketCap, changePercent }) {
 }
 
 export async function GET() {
-  const symbols = ["MSFT", "AAPL", "ASML", "NVDA", "AMZN", "MC.PA"];
+  const symbols = ["MSFT", "AAPL", "ASML", "NVDA", "AMZN", "MC.PA", "BTC-USD", "ETH-USD", "DOGE-USD"];
   try {
     const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${symbols.join(",")}`;
     const response = await fetch(url, { next: { revalidate: 900 }, headers: { "User-Agent": "HorizonResearch/1.0 contact@horizon.local" } });
     if (!response.ok) throw new Error(`Yahoo Finance returned ${response.status}`);
     const payload = await response.json();
     const opportunities = (payload.quoteResponse?.result || []).map((quote) => {
-      const scored = score(quote);
+      const isCrypto = quote.quoteType === "CRYPTOCURRENCY" || quote.symbol?.endsWith("-USD");
+      const scored = isCrypto
+        ? { score: Math.max(35, Math.min(75, Math.round(50 + Math.abs(quote.regularMarketChangePercent || 0) * 3))), confidence: 45, longTermAllocation: 50, mediumTermAllocation: 50 }
+        : score(quote);
       const longTermAllocation = scored.longTermAllocation;
       return {
         ticker: quote.symbol,
         name: quote.longName || quote.shortName || quote.symbol,
-        sector: quote.quoteType === "ETF" ? "ETF" : "Actions",
+        sector: isCrypto ? (quote.symbol?.startsWith("DOGE") ? "Memecoin" : "Crypto") : quote.quoteType === "ETF" ? "ETF" : "Actions",
         price: quote.regularMarketPrice ?? null,
         currency: quote.currency || "USD",
         changePercent: quote.regularMarketChangePercent ?? null,
@@ -39,6 +42,7 @@ export async function GET() {
         longTermAllocation,
         mediumTermAllocation: 100 - longTermAllocation,
         source: "Yahoo Finance",
+        methodology: isCrypto ? "Score de volatilité et de liquidité — non comparable au score fondamental des entreprises." : "Score fondamental Horizon v1",
         sourceUrl: `https://finance.yahoo.com/quote/${quote.symbol}`,
       };
     }).sort((a, b) => b.score - a.score);
