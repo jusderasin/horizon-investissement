@@ -7,3 +7,5 @@
 .h-main{width:0;min-width:0;overflow-x:hidden}
 .h-main header,.h-content{box-sizing:border-box;width:100%;max-width:none}
 .h-content{padding-right:28px}
+.horizon>.h-side{position:relative;padding:0;height:100vh}
+.horizon>.h-main{position:relative;grid-column:auto;margin:0;padding:0;max-width:none}
