@@ -1,0 +1,4 @@
+'use client';
+import { useRouter } from 'next/navigation';
+const assets = [{id:'gold',label:'Or',dot:'#D4AF37'},{id:'silver',label:'Argent',dot:'#BFC5CD'},{id:'nasdaq',label:'Nasdaq',dot:'#22D3EE'},{id:'sp500',label:'S&P 500',dot:'#3B82F6'},{id:'btc',label:'Bitcoin',dot:'#F7931A'},{id:'eth',label:'Ethereum',dot:'#8B5CF6'}];
+export function AssetSwitcher({ value }: { value: string }) { const router = useRouter(); return <label className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm"><span className="sr-only">Actif</span><select value={value} onChange={(e) => router.push(`/${e.target.value}`)} className="bg-transparent font-medium outline-none">{assets.map((asset) => <option key={asset.id} value={asset.id}>{asset.label}</option>)}</select><span aria-hidden className="h-2 w-2 rounded-full" style={{backgroundColor: assets.find((asset) => asset.id === value)?.dot}}/></label>; }

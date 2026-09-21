@@ -1,4 +1,0 @@
-# One Yahoo Finance ticker per line. Lines beginning with # are ignored.
-MSFT
-AAPL
-ASML
