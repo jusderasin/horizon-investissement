@@ -8,7 +8,7 @@ const brokers = [
   { name: "Revolut", url: "https://www.revolut.com/" },
   { name: "Interactive Brokers", url: "https://www.interactivebrokers.com/" },
 ];
-const discordUrl = process.env.NEXT_PUBLIC_DISCORD_INVITE_URL;
+const discordUrl = process.env.NEXT_PUBLIC_DISCORD_INVITE_URL || "https://discord.gg/jNrcA5zzp";
 const telegramUrl = process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL;
 
 export default function Workspace() {
