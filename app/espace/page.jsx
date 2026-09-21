@@ -9,7 +9,7 @@ const brokers = [
   { name: "Interactive Brokers", url: "https://www.interactivebrokers.com/" },
 ];
 const discordUrl = process.env.NEXT_PUBLIC_DISCORD_INVITE_URL || "https://discord.gg/jNrcA5zzp";
-const telegramUrl = process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL;
+const telegramUrl = process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL || "https://t.me/Horizon_invessementbot";
 
 export default function Workspace() {
   const [settings, setSettings] = useState(defaults);
